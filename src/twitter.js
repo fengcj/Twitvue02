@@ -7,7 +7,7 @@ var cb = new Codebird;
 twitter.cb = cb;
 
 // ADD YOUR KEYS HERE! If you have none, go to https://apps.twitter.com and generate them!
-cb.setConsumerKey("YOUR_OAUTH_TOKEN", "YOUR_OAUTH_SECRET");
+cb.setConsumerKey("AGpRV02EuPoN5IWVgHu2jFk6G", "m2ZRdmNUsuOSgsyBAp4HGkeka70nY9tC88UmQ0GOoWP7FjLxTN");
 
 var oauth_token = QueryString.oauth_token;
 var oauth_verifier = QueryString.oauth_verifier;
@@ -53,12 +53,13 @@ else {
           store.tweets.push(...reply);
         }
     );
-  }  
+  }
 }
 
 twitter.login = function () {
   cb.__call(
       "oauth_requestToken",
+      //{oauth_callback: "oob"},
       {oauth_callback: "http://localhost:8080/"},
       function (reply,rate,err) {
           if (err) {
@@ -77,7 +78,7 @@ twitter.login = function () {
               );
           }
       }
-  );  
+  );
 }
 
 export default twitter;
